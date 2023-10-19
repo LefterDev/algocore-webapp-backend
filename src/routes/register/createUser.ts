@@ -13,6 +13,8 @@ registerRouter.post("/create-user", async (req: Request, res: Response) => {
         decode = decoded;
     })
     const { email, username, password } = req.body
+    const queue = await User.findOne({username: username});
+    if(queue !== null) return res.status(400).send("This username already exists!");
     new User(
         {
             userid: generateUserID(username),
@@ -22,7 +24,6 @@ registerRouter.post("/create-user", async (req: Request, res: Response) => {
             password: hashPassword(12, password)
         }
     ).save().then( () => {
-        res.status(200);
-        res.send("Registration was successfuly")
+        res.status(200).send("Registration was successfuly!");
     }) 
 })

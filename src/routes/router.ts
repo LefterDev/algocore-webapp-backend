@@ -1,3 +1,5 @@
 import { registerRouter } from "./register/router";
+import { loginRoute } from "./login/router";
 
-exports = { registerRouter }
+export  { registerRouter }
+export  { loginRoute }

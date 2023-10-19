@@ -9,5 +9,3 @@ export const hashPassword = async (salt: number, pass: string): Promise<string> 
 export const comparePassword = async (hash: string, text: string): Promise<boolean> => {
     return compare(text, hash);
 }
-
-// export = { hashPassword , comparePassword }
